@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria</title>
+    <link href="galeria.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="galeria.js" ></script>
+</head>
+<body onload="imagenrandom()">
+    <section>
+        <h1>Galería de Imágenes</h1>
+        <div id="margen">
+            <div id="fotoSecundaria">
+
+            </div>
+            <div id="fotoPrincipal">
+            </div>
+         </div>
+        <br>
+        <div id="botones">
+            <button id="Izquierda"  onclick="izquierda()" >Atrás</button>
+            <button onclick="imagenrandom()">Iniciar</button>
+            <button id="Derecha" onclick="derecha()" >Siguiente</button>
+        </div>
+    </section>
+</body>
+</html>
+
