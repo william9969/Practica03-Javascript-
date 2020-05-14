@@ -2,7 +2,7 @@ var banderaCed = false;
 
 function validarCedula(elemento)
 {   
-    if(elemento.value.length > 0){
+    if(elemento.value.length > 0 && elemento.value.length<11){
             var miAscii = elemento.value.charCodeAt(elemento.value.length-1)
         //console.log(miAscii)
             if(miAscii >= 48 && miAscii <= 57 ){
@@ -59,10 +59,42 @@ function validarCedula(elemento)
                 return false
             }
         }
-        else
-        {
+        else if(elemento.value.length >10 ){
+            elemento.value = elemento.value.substring(0, elemento.value.length-1)
+        }
+        else {
             return true
         }
+
+}
+
+
+function validarTelefono(telefono){
+    if(telefono.value.length > 0 && telefono.value.length<11){
+        var miAscii = telefono.value.charCodeAt(telefono.value.length-1)
+        console.log(miAscii)
+        if(miAscii >= 48 && miAscii <= 57){
+            if(telefono.value.length == 10){
+            document.getElementById('mensajeTelefono').innerHTML = '<br>Numero valido'
+            telefono.style.border = '2px green solid'
+            document.getElementById('mensajeTelefono').style.color ='white';
+            }
+            return true
+        }
+        else {
+                telefono.value = telefono.value.substring(0, telefono.value.length-1)
+                document.getElementById('mensajeTelefono').innerHTML = '<br>Numero de Telefono no es valido'
+                telefono.style.border = '2px red solid'
+                return false
+            }
+    }
+    else if(telefono.value.length >10 ){
+        telefono.value = telefono.value.substring(0, telefono.value.length-1)
+    }
+    else {
+        return true
+    }
+    
 
 }
 
