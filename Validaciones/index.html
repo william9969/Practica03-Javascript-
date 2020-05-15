@@ -40,7 +40,7 @@
         <br>
 
         <label for="fecha">Fecha Nacimiento (*)</label>
-        <input type="text" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Ingrese sufecha de nacimiento ..." />
+        <input type="text" id="fechaNacimiento" onkeyup="return validarFecha(this)" name="fechaNacimiento" value="" placeholder="Ingrese sufecha de nacimiento ..." />
         <span id="mensajeFecha" class="error"></span>
         <br>
 
