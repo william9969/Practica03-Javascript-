@@ -27,9 +27,10 @@ function validarCedula(elemento)
                     } 
                     else 
                     { 
-                        mult = array[i] * 2; if ( mult > 9 )
+                        mult = array[i] * 2; 
+                        if ( mult > 9 )
                         total = total + ( mult - 9 );
-                    else
+                        else
                         total = total + mult;
                     }
                 }
