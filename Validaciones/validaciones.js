@@ -2,6 +2,8 @@ var banderaCed = false;
 var banderaTel = false;
 var banderaCor = false;
 var banderaNom = false;
+var banderaApe = false;
+var banderaCon =false;
 
 function validarCedula(elemento)
 {   
@@ -81,7 +83,7 @@ function validarTelefono(telefono){
         console.log(miAscii)
         if(miAscii >= 48 && miAscii <= 57){
             if(telefono.value.length == 10){
-            document.getElementById('mensajeTelefono').innerHTML = '<br>Numero valido';
+            document.getElementById('mensajeTelefono').innerHTML = '<br>Telefono valido';
             telefono.style.border = '2px green solid';
             document.getElementById('mensajeTelefono').style.color ='white';
             banderaTel=true;
@@ -140,6 +142,41 @@ function validarNombres(nombres){
         }
 }
 
+function validarApellidos(apellidos){
+    arrayApellidos = apellidos.value.split(" ");
+    if (arrayApellidos.length<3 ){
+        if(apellidos.value.length > 0){
+                var miAscii = apellidos.value.charCodeAt(apellidos.value.length-1)
+            if((miAscii >= 97 && miAscii <= 122) || (miAscii >= 65 && miAscii <= 90) || miAscii==32){
+                    console.log(arrayApellidos.length+"Aqiooo");
+                    if(arrayApellidos.length>1 && miAscii!=32){
+                        banderaApe=true;
+                        console.log(arrayApellidos.length+"X222");
+                        document.getElementById('mensajeApellidos').innerHTML = '<br>Apellido Valido';
+                        document.getElementById('mensajeApellidos').style.color ='white';
+                        apellidos.style.border = '2px green solid';
+                        return true;
+                    }
+                    else {
+                        banderaApe=false;
+                        document.getElementById('mensajeApellidos').innerHTML = '<br>Apellido No Valido';
+                        document.getElementById('mensajeApellidos').style.color ='red';
+                        apellidos.style.border = '2px red solid';
+                    }
+                    return true
+            }else {
+                apellidos.value = apellidos.value.substring(0, apellidos.value.length-1)
+                    return false
+                }
+            }else{
+            return true
+            }
+    }else {
+        apellidos.value = apellidos.value.substring(0, apellidos.value.length-1)
+            return false
+        }
+}
+
 
 function validarCorreo(correo){
     if (correo.value.length>3){
@@ -164,8 +201,65 @@ function validarCorreo(correo){
     }
 }
 
-function validarContraseña(){
-
+function   validarContraseña( contrasena){
+    //arrayApellidos=contraseña.value;
+    //var miAscii = contrasena.value.charCodeAt(contrasena.value.length-1);
+    if(contrasena.value.length >= 8)
+    {		
+        var arroba = false;
+        var guion = false;
+        var dolar = false;
+        var mayusculas = false;
+        var minusculas =false;
+        for(var i = 0;i<contrasena.value.length;i++)
+        {
+            if(contrasena.value.charCodeAt(i)==64)
+            {
+                arroba = true;
+                //console.log("arroba")
+            }
+            else if(contrasena.value.charCodeAt(i)==95)
+            {
+                guion = true;
+                //console.log("guin")
+            }
+            else if(contrasena.value.charCodeAt(i)==36)
+            {
+                dolar = true;
+                //console.log("dolar")
+            }
+            else if(contrasena.value.charCodeAt(i) >= 97 && contrasena.value.charCodeAt(i) <= 122 )
+            {
+                mayusculas=true;
+                //console.log("mayuscula")
+            }
+            else if(contrasena.value.charCodeAt(i) >= 65 && contrasena.value.charCodeAt(i) <= 90)
+            {
+                minusculas=true;
+                //console.log("minuscula")
+            }
+            
+        }
+        if(arroba == true && guion == true && dolar == true && mayusculas==true && minusculas==true)
+        {
+            banderaCon=true;
+            console.log("Contaseña")
+            document.getElementById('mensajeContrasena').innerHTML = '<br>Contraseña valida';
+            document.getElementById('mensajeContrasena').style.color='white';
+            contrasena.style.border = '2px green solid';
+            return true;
+        }
+        else {
+            banderaCon=false;
+            return false;
+        }
+    }
+    else{
+        document.getElementById('mensajeContrasena').innerHTML = '<br>Contraseña no valido';
+        document.getElementById('mensajeContrasena').style.color='red';
+        contrasena.style.border = '2px red solid';
+        return false;
+    }
 }
 
 function botonSubmit(){
