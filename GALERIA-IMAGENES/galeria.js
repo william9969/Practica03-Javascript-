@@ -19,30 +19,7 @@ function imagenrandom(){
   for(var i=0;i<5;i++){
     var numeroAleatorio = Math.ceil(Math.random()*9);
     imagenesrdm[i] =vectorImagenes[numeroAleatorio];
-  }
-      /*console.log("1--"+numeroAleatorio)
-      if (aleatorios.length > 1 ){
-        console.log("aqui")
-        x = new Boolean(false)
-        x=false;
-        console.log("aleatorios"+aleatorios[i])
-        var j=0;
-        while (j<5) {
-          console.log("X2")
-          var newnum;
-          for (j=0; j<5;j++){
-            if(aleatorios[j]==numeroAleatorio){
-              newnum = Math.ceil(Math.random()*9);
-              aleatorios[j]=newnum;
-              numeroAleatorio=newnum;
-              console.log("2--"+numeroAleatorio)
-              j==0;
-            }
-          }        
-        }
-      }*/
-      
-    
+  }    
     document.getElementById("fotoPrincipal").innerHTML=imagenesrdm[0];
     document.getElementById("fotoPrincipal").style.left=0+"px";
     contadorImagenes=0;
