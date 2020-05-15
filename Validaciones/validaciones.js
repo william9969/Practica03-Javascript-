@@ -1,6 +1,7 @@
 var banderaCed = false;
 var banderaTel = false;
 var banderaCor = false;
+var banderaNom = false;
 
 function validarCedula(elemento)
 {   
@@ -104,6 +105,40 @@ function validarTelefono(telefono){
     
 
 }
+function validarNombres(nombres){
+    arrayNombres = nombres.value.split(" ");
+    if (arrayNombres.length<3 ){
+        if(nombres.value.length > 0){
+                var miAscii = nombres.value.charCodeAt(nombres.value.length-1)
+            if((miAscii >= 97 && miAscii <= 122) || (miAscii >= 65 && miAscii <= 90) || miAscii==32){
+                    console.log(arrayNombres.length+"Aqiooo");
+                    if(arrayNombres.length>1 && miAscii!=32){
+                        banderaNom=true;
+                        console.log(arrayNombres.length+"X222");
+                        document.getElementById('mensajeNombres').innerHTML = '<br>Nombre Valido';
+                        document.getElementById('mensajeNombres').style.color ='white';
+                        nombres.style.border = '2px green solid';
+                        return true;
+                    }
+                    else {
+                        banderaNom=false;
+                        document.getElementById('mensajeNombres').innerHTML = '<br>Nombre No Valido';
+                        document.getElementById('mensajeNombres').style.color ='red';
+                        nombres.style.border = '2px red solid';
+                    }
+                    return true
+            }else {
+                nombres.value = nombres.value.substring(0, nombres.value.length-1)
+                    return false
+                }
+            }else{
+            return true
+            }
+    }else {
+        nombres.value = nombres.value.substring(0, nombres.value.length-1)
+            return false
+        }
+}
 
 
 function validarCorreo(correo){
@@ -129,9 +164,13 @@ function validarCorreo(correo){
     }
 }
 
+function validarContraseña(){
+
+}
+
 function botonSubmit(){
 
-    if(banderaCed==true){
+    if(banderaCed==true && banderaTel==true&&banderaCor==true){
         alert('Datos Correctos')
     }
     else{
