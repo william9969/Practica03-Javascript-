@@ -1,4 +1,6 @@
 var banderaCed = false;
+var banderaTel = false;
+var banderaCor = false;
 
 function validarCedula(elemento)
 {   
@@ -35,9 +37,9 @@ function validarCedula(elemento)
                         
                         console.log("Cedula Verdadera");
                         banderaCed=true;
-                        document.getElementById('mensajeCedula').innerHTML = '<br>La cedula es es valida'
+                        document.getElementById('mensajeCedula').innerHTML = '<br>La cedula es es valida';
                         document.getElementById('mensajeCedula').style.color ='white';
-                        document.getElementById('cedula').style.border = '2px chartreuse solid'
+                        document.getElementById('cedula').style.border = '2px chartreuse solid';
                         return true;
                     }
                     else
@@ -49,8 +51,8 @@ function validarCedula(elemento)
                 }
                 else
                 {
-                    document.getElementById('mensajeCedula').innerHTML = '<br>La cedula no es valida'
-                    document.getElementById('cedula').style.border = '2px red solid'
+                    document.getElementById('mensajeCedula').innerHTML = '<br>La cedula no es valida';
+                    document.getElementById('cedula').style.border = '2px red solid';
                 }
                 return true
             }
@@ -69,15 +71,19 @@ function validarCedula(elemento)
 }
 
 
+
+
+
 function validarTelefono(telefono){
     if(telefono.value.length > 0 && telefono.value.length<11){
         var miAscii = telefono.value.charCodeAt(telefono.value.length-1)
         console.log(miAscii)
         if(miAscii >= 48 && miAscii <= 57){
             if(telefono.value.length == 10){
-            document.getElementById('mensajeTelefono').innerHTML = '<br>Numero valido'
-            telefono.style.border = '2px green solid'
+            document.getElementById('mensajeTelefono').innerHTML = '<br>Numero valido';
+            telefono.style.border = '2px green solid';
             document.getElementById('mensajeTelefono').style.color ='white';
+            banderaTel=true;
             }
             return true
         }
@@ -85,6 +91,7 @@ function validarTelefono(telefono){
                 telefono.value = telefono.value.substring(0, telefono.value.length-1)
                 document.getElementById('mensajeTelefono').innerHTML = '<br>Numero de Telefono no es valido'
                 telefono.style.border = '2px red solid'
+                banderaTel=false;
                 return false
             }
     }
@@ -96,6 +103,30 @@ function validarTelefono(telefono){
     }
     
 
+}
+
+
+function validarCorreo(correo){
+    if (correo.value.length>3){
+        if (/^\w+([\.-]?\w+)*@(?:|est)\.(?:|ups)\.(?:|edu)\.(?:|ec)+$/.test(correo.value) || /^\w+([\.-]?\w+)*@(?:|ups)\.(?:|edu)\.(?:|ec)+$/.test(correo.value) ){
+                document.getElementById('mensajeCorreo').innerHTML = '<br>El Correo valido';
+                document.getElementById('mensajeCorreo').style.color ='white';
+                correo.style.border = '2px green solid';
+                banderaCor=true;
+                return true;
+        } else {
+                document.getElementById('mensajeCorreo').innerHTML = '<br>El Correo no es valido';
+                document.getElementById('mensajeCorreo').style.color ='red';
+                correo.style.border = '2px red solid';
+                banderaCor=false;
+                return false;
+        }
+    }
+    else{
+        document.getElementById('mensajeCorreo').innerHTML = '<br>El Correo no es valido';
+        correo.style.border = '2px red solid';
+        return false;
+    }
 }
 
 function botonSubmit(){
